@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #quote-container {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        #quote-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #time-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #new-quote-btn {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="quote-container">
+        <p id="quote-text"></p>
+        <p id="time-text"></p>
+        <button id="new-quote-btn">New Quote</button>
+    </div>
+    <script>
+        const quotes = [
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "Innovation distinguishes between a leader and a follower. - Steve Jobs",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+            "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+            "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+            "The best way to predict the future is to create it. - Peter Drucker"
+        ];
+        function getRandomQuote() {
+            return quotes[Math.floor(Math.random() * quotes.length)];
+        }
+        function getTimeOfDay() {
+            const currentHour = new Date().getHours();
+            if (currentHour >= 5 && currentHour < 12) {
+                return "Lets start your morning with new quote!";
+            } else if (currentHour >= 12 && currentHour < 18) {
+                return "Lets start your afternoon with new quote!";
+            } else {
+                return "Lets start your nigth with new quote";
+            }
+        }
+        function displayQuote() {
+            const quoteText = document.getElementById("quote-text");
+            const timeText = document.getElementById("time-text");
+            quoteText.textContent = getRandomQuote();
+            timeText.textContent = getTimeOfDay();
+        }
+        const newQuoteBtn = document.getElementById("new-quote-btn");
+        newQuoteBtn.addEventListener("click", displayQuote);
+        displayQuote();
+
+    </script>
+</body>
+
+</html>
